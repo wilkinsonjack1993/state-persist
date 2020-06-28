@@ -1,31 +1,19 @@
-import React, { useState, ChangeEvent } from 'react';
-import { useStorageState } from '../hooks/useStorageState';
+import React, { ChangeEvent } from 'react';
+import { useLiveStorageState } from '../hooks/useStorageState';
 
 const KEY = 'demoKey';
 
 export const UseStorageStateDemo = () => {
-  const [live, setLive] = useState(false);
-
-  const [state, setState, clear] = useStorageState(
+  const [state, setState, clear] = useLiveStorageState(
     'demoKey',
-    'Initial value',
-    live
+    'Initial value'
   );
 
-  const [state2] = useStorageState(KEY, 'Other initial value', live);
+  const [state2] = useLiveStorageState(KEY, 'Other initial value');
 
   return (
     <>
       <>Current state is: {state}</>
-      <br />
-      <br />
-      <input
-        type="checkbox"
-        id="live"
-        name="live"
-        onChange={() => setLive(!live)}
-      />
-      <label> Is live updating</label>
       <br />
       <br />
       Type below to update state:
