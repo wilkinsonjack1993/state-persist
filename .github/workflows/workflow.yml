@@ -1,4 +1,4 @@
-name: Deploy from master 
+name: Deploy from master
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-          registry-url: https://<YOURREGISTRY>.bytesafe.dev/r/default
+          registry-url: https://registry.npmjs.org/state-persist
       - run: npm ci
       - run: npm publish
         env:
