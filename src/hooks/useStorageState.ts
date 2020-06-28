@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
-export const useBaseStorageState = (
+export const useBaseStorageState = <T>(
   storage: Storage,
   storageKey: string,
-  defaultValue: any,
+  defaultValue: T,
   live = false
 ) => {
   // Get value from storage, if not use default value
@@ -32,31 +32,25 @@ export const useBaseStorageState = (
   return [state, setStateExternal, clear];
 };
 
-export const useStorageState = (
-  storageKey: string,
-  defaultValue: any,
-  live?: boolean
-) => useBaseStorageState(localStorage, storageKey, defaultValue, live);
+export const useStorageState = <T>(storageKey: string, defaultValue: T) =>
+  useBaseStorageState(localStorage, storageKey, defaultValue, false);
 
-export const useLiveStorageState = (storageKey: string, defaultValue: any) =>
-  useStorageState(storageKey, defaultValue, true);
+export const useLiveStorageState = <T>(storageKey: string, defaultValue: T) =>
+  useBaseStorageState(localStorage, storageKey, defaultValue, true);
 
-export const useSessionState = (
-  storageKey: string,
-  defaultValue: any,
-  live?: boolean
-) => useBaseStorageState(sessionStorage, storageKey, defaultValue, live);
+export const useSessionState = <T>(storageKey: string, defaultValue: T) =>
+  useBaseStorageState(sessionStorage, storageKey, defaultValue, false);
 
-export const useLiveSessionState = (storageKey: string, defaultValue: any) =>
-  useStorageState(storageKey, defaultValue, true);
+export const useLiveSessionState = <T>(storageKey: string, defaultValue: T) =>
+  useBaseStorageState(sessionStorage, storageKey, defaultValue, true);
 
-function setStateBuilder(
-  state: any,
-  setState: (newState: any) => void,
+function setStateBuilder<T>(
+  state: T,
+  setState: (newState: T) => void,
   live: boolean,
   storageKey: string
 ) {
-  return (newState: any) => {
+  return (newState: T) => {
     const oldValue = JSON.stringify(state);
     setState(newState);
     if (live) {
@@ -96,9 +90,9 @@ function useLiveStorageListners(
   }, [live, storageKey]);
 }
 
-export function handleStorageEvent(
+export function handleStorageEvent<T>(
   storageKey: string,
-  setState: (newState: any) => void
+  setState: (newState: T) => void
 ) {
   return (evt: StorageEvent) => {
     if (evt.key === storageKey && evt.newValue !== evt.oldValue) {

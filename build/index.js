@@ -22,13 +22,17 @@ var useBaseStorageState = function (storage, storageKey, defaultValue, live) {
     var setStateExternal = setStateBuilder(state, setState, live, storageKey);
     return [state, setStateExternal, clear];
 };
-var useStorageState = function (storageKey, defaultValue, live) { return useBaseStorageState(localStorage, storageKey, defaultValue, live); };
-var useLiveStorageState = function (storageKey, defaultValue) {
-    return useStorageState(storageKey, defaultValue, true);
+var useStorageState = function (storageKey, defaultValue) {
+    return useBaseStorageState(localStorage, storageKey, defaultValue, false);
 };
-var useSessionState = function (storageKey, defaultValue, live) { return useBaseStorageState(sessionStorage, storageKey, defaultValue, live); };
+var useLiveStorageState = function (storageKey, defaultValue) {
+    return useBaseStorageState(localStorage, storageKey, defaultValue, true);
+};
+var useSessionState = function (storageKey, defaultValue) {
+    return useBaseStorageState(sessionStorage, storageKey, defaultValue, false);
+};
 var useLiveSessionState = function (storageKey, defaultValue) {
-    return useStorageState(storageKey, defaultValue, true);
+    return useBaseStorageState(sessionStorage, storageKey, defaultValue, true);
 };
 function setStateBuilder(state, setState, live, storageKey) {
     return function (newState) {

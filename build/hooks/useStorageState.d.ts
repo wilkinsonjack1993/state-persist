@@ -1,6 +1,6 @@
-export declare const useBaseStorageState: (storage: Storage, storageKey: string, defaultValue: any, live?: boolean) => any[];
-export declare const useStorageState: (storageKey: string, defaultValue: any, live?: boolean | undefined) => any[];
-export declare const useLiveStorageState: (storageKey: string, defaultValue: any) => any[];
-export declare const useSessionState: (storageKey: string, defaultValue: any, live?: boolean | undefined) => any[];
-export declare const useLiveSessionState: (storageKey: string, defaultValue: any) => any[];
-export declare function handleStorageEvent(storageKey: string, setState: (newState: any) => void): (evt: StorageEvent) => void;
+export declare const useBaseStorageState: <T>(storage: Storage, storageKey: string, defaultValue: T, live?: boolean) => any[];
+export declare const useStorageState: <T>(storageKey: string, defaultValue: T) => any[];
+export declare const useLiveStorageState: <T>(storageKey: string, defaultValue: T) => any[];
+export declare const useSessionState: <T>(storageKey: string, defaultValue: T) => any[];
+export declare const useLiveSessionState: <T>(storageKey: string, defaultValue: T) => any[];
+export declare function handleStorageEvent<T>(storageKey: string, setState: (newState: T) => void): (evt: StorageEvent) => void;
