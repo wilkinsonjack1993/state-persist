@@ -78,4 +78,4 @@ const [state, setState, clear] = useLiveSessionState(storageKey, defaultValue);
 
 - storageKey: string - The key that will be used for either local or session
 
-- defaultValue: string - Optional - The default value if no value is present in local/session storage
+- defaultValue: any - Optional - The default value if no value is present in local/session storage. Can be any value that can be stringified.
