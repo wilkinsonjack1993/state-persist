@@ -1,6 +1,6 @@
 {
   "name": "state-persist",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Persistant state library",
   "main": "build/index.js",
   "module": "build/index.es.js",
