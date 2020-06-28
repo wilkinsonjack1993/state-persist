@@ -1,10 +1,17 @@
 {
   "name": "state-persist",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Persistant state library",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "jsnext:main": "build/index.es.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wilkinsonjack1993/state-persist.git"
+  },
+  "files": [
+    "build"
+  ],
   "scripts": {
     "build": "rollup -c",
     "lint": "standard",
@@ -12,7 +19,16 @@
     "test": "jest --coverage",
     "storybook": "start-storybook"
   },
-  "keywords": [],
+  "keywords": [
+    "state",
+    "persist",
+    "react",
+    "hooks",
+    "local",
+    "storage",
+    "localStorage",
+    "sessionStorage"
+  ],
   "author": {
     "name": "Jack Wilkinson",
     "email": "wilkinsonjack1993@gmail.com"
@@ -77,5 +93,9 @@
       "afterAll",
       "jest"
     ]
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/wilkinsonjack1993/state-persist/issues"
+  },
+  "homepage": "https://github.com/wilkinsonjack1993/state-persist#readme"
 }

@@ -1,1 +1,1 @@
-export * from './components/MyComponent';
+export * from './hooks/useStorageState';
